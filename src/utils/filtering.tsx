@@ -7,11 +7,9 @@ export const hasTypes = (pokemon: Pokemon, types: string[]): boolean => {
   }
 
   return types.every((type) => {
-    const pokemonFilteredTypes = pokemon.types?.filter(
-      (value) => value?.name === type
-    );
+    const typeIndex = pokemon.types?.findIndex((value) => value?.name === type);
 
-    return !!pokemonFilteredTypes && pokemonFilteredTypes.length > 0;
+    return typeIndex != -1;
   });
 };
 
@@ -48,7 +46,10 @@ export const filterPokemon = (
   sort: string
 ): Pokemon[] => {
   const filteredPokemon = pokemon.filter((pokemon: Pokemon) => {
-    return pokemon.name?.includes(nameFilter) && hasTypes(pokemon, typeFilter);
+    return (
+      pokemon.name?.includes(nameFilter.toLowerCase()) &&
+      hasTypes(pokemon, typeFilter)
+    );
   });
 
   return sortPokemon(filteredPokemon, sort);

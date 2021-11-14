@@ -117,6 +117,10 @@ describe('filterPokemon', () => {
     expect(filterPokemon(pokemon, 'bulb', [], '')).toEqual([bulbasaur]);
   });
 
+  it('filter by name is case insensitive', () => {
+    expect(filterPokemon(pokemon, 'BULB', [], '')).toEqual([bulbasaur]);
+  });
+
   it('can filter by type', () => {
     expect(filterPokemon(pokemon, '', ['Fire'], '')).toEqual([charmander]);
   });

@@ -36,11 +36,11 @@ export const PokemonCard: React.FC<Props> = ({ pokemon, setFavourites }) => {
   useEffect(() => {
     const favourites = getFavourites();
 
-    const favList = favourites.filter((favourite: Pokemon) => {
+    const favIndex = favourites.findIndex((favourite: Pokemon) => {
       return favourite.id === pokemon.id;
     });
 
-    setIsFavourite(favList.length > 0);
+    setIsFavourite(favIndex != -1);
   });
 
   return (
