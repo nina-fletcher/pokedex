@@ -1,0 +1,13 @@
+query GetAllPokemon {
+  allPokemon(limit: 151, filter: true) {
+    id
+    name
+    types {
+      id
+      name
+    }
+    sprites {
+      front_default
+    }
+  }
+}

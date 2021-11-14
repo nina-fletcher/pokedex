@@ -1,0 +1,14 @@
+schema: 'https://dex-server.herokuapp.com/'
+overwrite: true
+documents: './src/graphql/queries/*.graphql'
+generates:
+  ./src/graphql/generated/config.tsx:
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-react-apollo'
+    config:
+      withHooks: true
+      withHOC: false
+      withComponent: false
+      apolloClientVersion: 3
